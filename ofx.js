@@ -1,4 +1,4 @@
-const xml2json = require('xml2json');
+const parser = require('fast-xml-parser')
 
 function sgml2Xml(sgml) {
     return sgml
@@ -10,7 +10,16 @@ function sgml2Xml(sgml) {
 }
 
 function parseXml(content) {
-    return JSON.parse(xml2json.toJson(content, { coerce: false }))
+  const options = {
+    parseNodeValue : false,
+    parseAttributeValue : false
+  }
+
+  if (parser.validate(content) === true) {
+    return parser.parse(content, options)
+  }
+
+  throw new Error('Error while parsing content')
 }
 
 function parse(data) {

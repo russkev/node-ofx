@@ -5,7 +5,7 @@ Parse Open Financial Exchange (OFX) files into a usable data structure. Serializ
 ## Install ##
 
 ```
-$ npm install ofx
+$ npm install node-ofx-parser
 ```
 
 ## Parsing ##
@@ -69,6 +69,8 @@ In your data returned, you will have the following properties:
 
 ## caveats ##
 
+This library is just a fork of the [node-ofx](https://github.com/chilts/node-ofx) made by [Andrew Chilton](https://github.com/chilts), the logic is the same, only difference is the xml-parser dependency. His version has a dependency that was breaking my CI, so I created another version with the [fast-xml-parser](https://www.npmjs.com/package/fast-xml-parser)
+
 The OFX file format is yucky, horrible and just silly. This module helps parse
 the ones I know about. And it doesn't do it in a nice way either. It may or may
 not work for your own use - only by trying it will you find out.
@@ -83,42 +85,7 @@ This module takes the OFX format and does the following:
 
 ## Credits ##
 
-Thanks to [Christian Sullivan](https://github.com/euforic) for writing
-[banking.js](https://github.com/euforic/banking.js), upon which some of this code is based. Many thanks for letting me
-use it.
-
-## Author ##
-
-```
-$ npx chilts
-
-   ╒════════════════════════════════════════════════════╕
-   │                                                    │
-   │   Andrew Chilton (Personal)                        │
-   │   -------------------------                        │
-   │                                                    │
-   │          Email : andychilton@gmail.com             │
-   │            Web : https://chilts.org                │
-   │        Twitter : https://twitter.com/andychilton   │
-   │         GitHub : https://github.com/chilts         │
-   │         GitLab : https://gitlab.org/chilts         │
-   │                                                    │
-   │   Apps Attic Ltd (My Company)                      │
-   │   ---------------------------                      │
-   │                                                    │
-   │          Email : chilts@appsattic.com              │
-   │            Web : https://appsattic.com             │
-   │        Twitter : https://twitter.com/AppsAttic     │
-   │         GitLab : https://gitlab.com/appsattic      │
-   │                                                    │
-   │   Node.js / npm                                    │
-   │   -------------                                    │
-   │                                                    │
-   │        Profile : https://www.npmjs.com/~chilts     │
-   │           Card : $ npx chilts                      │
-   │                                                    │
-   ╘════════════════════════════════════════════════════╛
-```
+Thanks to [Andrew Chilton](https://github.com/chilts) for writing the lib [node-ofx](https://github.com/chilts/node-ofx), which this one is a fork with just a change of xml-parser library
 
 ## License ##
 
