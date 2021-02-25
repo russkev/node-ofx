@@ -1,5 +1,5 @@
 {
-  "name": "ofx",
+  "name": "node-ofx-parser",
   "description": "Parse OFX files into a usable data structure.",
   "version": "0.5.0",
   "author": {
