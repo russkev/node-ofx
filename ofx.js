@@ -9,11 +9,23 @@ function sgml2Xml(sgml) {
         .replace(/<(\w+?)>([^<]+)/g, '<\$1>\$2</\$1>');
 }
 
+// Preparing data fixing issues with special characters
+function prepareData (content) {
+  return content
+    .replace(/&/g, '&amp;amp;')
+}
+
 function parseXml(content) {
   const options = {
+    ignoreAttributes : true,
+    ignoreNameSpace : false,
+    allowBooleanAttributes : false,
     parseNodeValue : false,
-    parseAttributeValue : false
-  }
+    parseAttributeValue : false,
+    trimValues: true,
+    parseTrueNumberOnly: false
+};
+
 
   if (parser.validate(content) === true) {
     return parser.parse(content, options)
@@ -41,9 +53,9 @@ function parse(data) {
     // Try as XML first, and if that fails do the SGML->XML mangling
     let dataParsed = null;
     try {
-      dataParsed = parseXml(content);
+      dataParsed = parseXml(prepareData(content));
     } catch (e) {
-      dataParsed = parseXml(sgml2Xml(content));
+      dataParsed = parseXml(prepareData(sgml2Xml(content)));
     }
 
     // put the headers into the returned data
