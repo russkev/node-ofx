@@ -30,7 +30,7 @@
     "tape": "^4.6.3"
   },
   "dependencies": {
-    "fast-xml-parser": "^3.18.0"
+    "fast-xml-parser": "^4.3.2"
   },
   "main": "./ofx.js",
   "directories": {},
